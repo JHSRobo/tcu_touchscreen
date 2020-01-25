@@ -2,7 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import { PowerService } from '../services/publishers-subscribers/power.service';
 import { SolenoidService } from '../services/publishers-subscribers/solenoid.service';
 import { SafetyService } from '../services/publishers-subscribers/safety.service';
-import { BooleanModel } from "../services/boolean.model";
+import { BooleanModel } from '../services/boolean.model';
+import {ShutdownService} from '../services/shutdown.service';
 
 @Component({
   selector: 'app-buttons',
@@ -14,7 +15,8 @@ export class ButtonsComponent implements OnInit{
     constructor(
         public powerService: PowerService,
         public solenoidService: SolenoidService,
-        public safetyService: SafetyService) {}
+        public safetyService: SafetyService,
+        private shutDownService: ShutdownService) {}
 
     buttonStyle = 'powerbuttonoff';
     togglework = false;
@@ -31,6 +33,7 @@ export class ButtonsComponent implements OnInit{
     }
 
     confirm() {
+        this.shutDownService.shutdown();
         this.power = !this.power;
         this.powerService.publish(this.power);
         this.visible = false;

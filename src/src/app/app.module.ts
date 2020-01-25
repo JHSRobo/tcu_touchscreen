@@ -10,6 +10,7 @@ import 'hammerjs';
 import { AppComponent } from './app.component';
 import { SlidersComponent } from './sliders/sliders.component';
 import { ButtonsComponent } from './buttons/buttons.component';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { ButtonsComponent } from './buttons/buttons.component';
     MatButtonModule,
     Ng5SliderModule,
     FormsModule,
-    MatDialogModule
+    MatDialogModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
